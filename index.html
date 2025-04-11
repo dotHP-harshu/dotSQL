@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- Created by Harsh Prajapati -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dotSQL</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+
+<body>
+
+    <!-- ------ Header starts here -----------  -->
+    <header>
+        dotSQL
+    </header>
+    <!-- ------ Header ends here -----------  -->
+
+    <!-- ----- Main starts here --------   -->
+    <main>
+
+        <!-- ========= command box ==========  -->
+        <div id="command-input-container">
+            <label for="command-input">Enter command here and click on run button </label><br>
+            <input type="text" id="command-input" placeholder="Command">
+            <button id="run-btn">Run</button>
+        </div>
+        <!-- ========= command box ==========  -->
+
+
+        <div id="data-container">
+
+            <!-- ========== table container ==========  -->
+            <div id="table-name-container">
+                <h3>Tables :</h3>
+                <ul>
+                    <li class="table-name">Students</li>
+                    <li class="table-name">constumers</li>
+                    <li class="table-name">college</li>
+                </ul>
+            </div>
+            <!-- ========== table container ==========  -->
+
+            <!-- ============= table data container ============= -->
+            <div id="table-data-container">
+                <h2></h2>
+                <table id="table-data">
+                    <thead id="table-head">
+                        <!-- All columns will be here  -->
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- All rows will be here  -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- ============= table data container ============= -->
+
+        </div>
+
+    </main>
+    <!-- ----- Main ends here --------   -->
+
+
+
+    <!-- Script files  -->
+    <script src="javascripts/database.js"></script>
+    <script src="javascripts/commands.js"></script>
+    <script src="javascripts/utilityFunctions.js"></script>
+    <script src="javascripts/index.js"></script>
+    <!-- Script files  -->
+
+</body>
+
+</html>
