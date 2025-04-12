@@ -1,4 +1,10 @@
 
+// function to show help
+function showHelp (){
+    const helpContainer = document.getElementById("help-container");
+    helpContainer.style.display = "inline-block";
+}
+
 // funtion that show existing table names in a list 
 function showTableNames(tables) {
     let tableNameContainer = document.querySelector('#table-name-container ul');
@@ -16,14 +22,25 @@ function showTableNames(tables) {
 }
 
 // function that show error if any err occurs
-function showError(err) {
-    let newTable = document.getElementById('table-data');
-    newTable.innerHTML = ''
+function showError(err, msgType) {
+    let msgContainer = document.getElementById('msg-container');
+    msgContainer.innerHTML = ''
+    
+    let tableContainer = document.getElementById('table-data');
+    tableContainer.innerHTML = '';
+    let name = document.querySelector("#table-data-container h2");
+    name.innerText = '';
 
     let errMsg = document.createElement('p');
-    errMsg.classList.add("err-msg");
+
+    if(msgType == 'error'){
+        errMsg.classList.add("error-msg");
+    }else if(msgType == 'success'){
+        errMsg.classList.add("success-msg");
+    }
+
     errMsg.innerText = err;
-    newTable.appendChild(errMsg);
+    msgContainer.appendChild(errMsg);
 
 }
 
@@ -56,6 +73,19 @@ function makeCols(cols) {
     return tableHead;
 }
 
+// function to make a table
+function makeTable(rows, cols, tableName) {
+    let msgContainer = document.getElementById("msg-container");
+    msgContainer.innerHTML = '';
+    let newTable = document.getElementById('table-data');
+    newTable.innerHTML = '';
+    newTable.appendChild(rows);
+    newTable.appendChild(cols);
+    let name = document.querySelector("#table-data-container h2");
+    name.innerText = tableName;
+}
+
+
 // funtion to search table in database and make table by combining columns and rows 
 function showDataInTable(tableName) {
     let tables = Object.keys(database);
@@ -65,14 +95,9 @@ function showDataInTable(tableName) {
         let tableCols = database[`${tableName}`].col;
         let rows = makeCols(tableCols);
         let cols = makeRows(tableRows);
-        let newTable = document.getElementById('table-data');
-        newTable.innerHTML = '';
-        newTable.appendChild(rows);
-        newTable.appendChild(cols);
-        let name = document.querySelector("#table-data-container h2");
-        name.innerText = tableName;
+        makeTable(rows, cols, tableName);
     } else {
-        showError("* The given table name does not exist in the database.");
+        showError("* The given table name does not exist in the database." , "error");
     }
 }
 
