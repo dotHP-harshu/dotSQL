@@ -7,13 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dotSQL</title>
     <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="screen and (max-width:425px)">
 </head>
 
 <body>
 
+    <!-- ------ Preloader starts here -----------  -->
+    <div id="preloader">
+        <span class="loader"></span>
+    </div>
+    <!-- ------ Preloader ends here -----------  -->
+
     <!-- ------ Header starts here -----------  -->
     <header>
-        dotSQL
+        <h1>dotSQL</h1>
+        <button onclick="showHelp()">📄 Help</button>
     </header>
     <!-- ------ Header ends here -----------  -->
 
@@ -22,8 +30,7 @@
 
         <!-- ========= command box ==========  -->
         <div id="command-input-container">
-            <label for="command-input">Enter command here and click on run button </label><br>
-            <input type="text" id="command-input" placeholder="Command">
+            <input autofocus autocomplete="" placeholder="Enter command here and click on run button" type="text" id="command-input">
             <button id="run-btn">Run</button>
         </div>
         <!-- ========= command box ==========  -->
@@ -44,6 +51,7 @@
 
             <!-- ============= table data container ============= -->
             <div id="table-data-container">
+                <div id="msg-container"></div>
                 <h2></h2>
                 <table id="table-data">
                     <thead id="table-head">
@@ -61,12 +69,38 @@
     </main>
     <!-- ----- Main ends here --------   -->
 
+    <!-- ----- Footer starts here --------   -->
+    <footer>
+        <div>
+            <a target="_blank" href="https://github.com/dothp-harshu"><img src="assets/images/github-icon.svg"
+                    height="50px" width="50px" alt="github-icon"></a>
+            <a target="_blank" href="https://linkdedin.com/in/dothp"><img src="assets/images/linkedin-icon.svg"
+                    height="40px" width="40px" alt="linkedin-icon"></a>
+        </div>
+        <div>
+            <p>&copy; 2025 | dotHP Harsh Prajapati</p>
+        </div>
+    </footer>
+    <!-- ----- Footer ends here --------   -->
+
+     
+    <!-- ----- Help section starts here --------   -->
+    <section id="help-container">
+        <img src="assets/images/cross-icon.svg" alt="cross-icon" id="cross-icon">
+        <div id="help-table"></div>
+    </section>
+    <!-- ----- Help section ends here --------   -->
+
+
+
+
 
 
     <!-- Script files  -->
     <script src="javascripts/database.js"></script>
-    <script src="javascripts/commands.js"></script>
     <script src="javascripts/utilityFunctions.js"></script>
+    <script src="javascripts/commands.js"></script>
+    <script src="javascripts/help.js"></script>
     <script src="javascripts/index.js"></script>
     <!-- Script files  -->
 
