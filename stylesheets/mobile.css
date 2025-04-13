@@ -31,3 +31,11 @@
     padding: 0.5rem;
     font-size: 10px;
 }
+
+#help-container {
+    height: 100vh;
+}
+#cross-icon{
+    width: 20px;
+    height: 20px;
+}
