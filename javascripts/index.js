@@ -36,6 +36,15 @@ function runCommand(cmd) {
     else if (cmd.startsWith("MADAD")) {
         help(cmd);
     }
+    else if (cmd.startsWith("DATABASE HATAO")) {
+        dropDatabase(cmd);
+    }
+    else if (cmd.startsWith("BACKUP LO")) {
+        backupDatabase(cmd);
+    }
+    else if (cmd.startsWith("RESTORE KARO")) {
+        restoreDatabase(cmd);
+    }
     else {
         showError("Invalid command syntax.", "error")
     }

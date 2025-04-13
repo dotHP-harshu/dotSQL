@@ -171,7 +171,7 @@ function addColumn(cmd) {
     let [, tableName, columnName] = match;
     if (!database[tableName]) return showError(`Table "${tableName}" does not exist in the database.`, "error");
 
-    if(database[tableName].col.includes(columnName)) return showError(`Column "${columnName}" already exists in the table "${tableName}".`, "error")
+    if (database[tableName].col.includes(columnName)) return showError(`Column "${columnName}" already exists in the table "${tableName}".`, "error")
     // add column in the table
     database[tableName].col.push(columnName);
 
@@ -346,4 +346,47 @@ function help(cmd) {
 
     showHelp();
 
+}
+
+// Function to drop the database
+function dropDatabase(cmd) {
+    let pattern = /DATABASE HATAO/;
+    let match = cmd.match(pattern);
+
+    if (!match) return ("Invalid command syntax.", "error");
+
+    let confirmation = confirm("Data will be completely deleted. Are you sure to perform this action?");
+    if (confirmation) {
+        database = {};
+        let tableNameContainer = document.querySelector('#table-name-container ul');
+        tableNameContainer.innerHTML = '';
+        return showError("Database deleted successfully.", "success")
+    }
+}
+
+// Function to take and save backup 
+function backupDatabase(cmd) {
+    let pattern = /BACKUP LO/;
+    let match = cmd.match(pattern);
+
+    if (!match) return ("Invalid commad syntax.", "error");
+
+    let dataStr = JSON.stringify(database);
+    localStorage.setItem("database", dataStr);
+}
+
+
+// Function to restore database
+function restoreDatabase(cmd) {
+    let pattern = /RESTORE KARO/;
+    let match = cmd.match(pattern);
+
+    if (!match) return ("Invalid commad syntax.", "error");
+
+    let savedData = localStorage.getItem("database");
+    savedData = JSON.parse(savedData)
+    database = savedData;
+
+    showError("Database restored from the last backup.", "success");
+    showTableNames(Object.keys(database));
 }

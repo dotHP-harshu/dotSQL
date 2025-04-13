@@ -86,6 +86,7 @@ function makeTable(rows, cols, tableName) {
 }
 
 
+
 // funtion to search table in database and make table by combining columns and rows 
 function showDataInTable(tableName) {
     let tables = Object.keys(database);
