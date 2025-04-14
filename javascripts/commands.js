@@ -373,6 +373,8 @@ function backupDatabase(cmd) {
 
     let dataStr = JSON.stringify(database);
     localStorage.setItem("database", dataStr);
+    showError("Database is bakuped and saved in localstorage.", "success");
+
 }
 
 
@@ -390,3 +392,4 @@ function restoreDatabase(cmd) {
     showError("Database restored from the last backup.", "success");
     showTableNames(Object.keys(database));
 }
+
